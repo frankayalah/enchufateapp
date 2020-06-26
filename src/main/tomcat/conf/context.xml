@@ -2,7 +2,7 @@
 <Context>
     <WatchedResource>WEB-INF/web.xml</WatchedResource> 
  
-    <Resource
+ 	<Resource
             factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
             name="jdbc/tomcatDataSource"
             auth="Container"
@@ -14,13 +14,16 @@
             maxWait="5000"
             username="root"
             password="admin"
-            driverClassName="com.mysql.jdbc.Driver"
+            driverClassName="com.mysql.cj.jdbc.Driver"
             validationQuery="SELECT 'OK'"
             testWhileIdle="true"
             testOnBorrow="true"
             numTestsPerEvictionRun="5"
             timeBetweenEvictionRunsMillis="30000"
             minEvictableIdleTimeMillis="60000"
-            url="jdbc:mysql://localhost:3306/enchufatedb" />
+            useUnicode="true"
+            useJDBCCompliantTimezoneShift="true"
+            useLegacyDatetimeCode="false"
+            url="jdbc:mysql://localhost/enchufatedb?serverTimezone=UTC" />
  
 </Context>

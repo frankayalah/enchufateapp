@@ -65,4 +65,11 @@
 			<trim-directive-whitespaces>true</trim-directive-whitespaces>
 		</jsp-property-group>
 	</jsp-config>
+	
+	<resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/tomcatDataSource</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+  </resource-ref>
 </web-app>
