@@ -7,6 +7,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+	<!-- Apache tomcat 7 -->
+
 	<build>
 		<finalName>enchufateapp</finalName>
 		<plugins>
