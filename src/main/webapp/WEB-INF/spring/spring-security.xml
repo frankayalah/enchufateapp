@@ -21,8 +21,11 @@
         <security:authentication-provider>
             <security:jdbc-user-service
                     data-source-ref="myContactDataSource"
-                    users-by-username-query="select vchCorreo, vchClave, vchNombre, vchApellidoPaterno, vchApellidoMaterno, dtmFechaNacimiento, blbImagen, vchGenero, vchSede from tblusuario where vchCorreo = ?"
-                    authorities-by-username-query="select u.vchCorreo as login, u.vchRol as role from tblusuario u where vchCorreo = ?" />
+                    users-by-username-query="select vchCorreo as username, vchClave as password, intActivo as enabled from enchufatedb.tblusuario where vchCorreo = ?"
+                    authorities-by-username-query="SELECT u.intCodigoUsuario as username, r.vchRol as role FROM enchufatedb.tblusuario u
+													INNER JOIN enchufatedb.tblusuariorol ur ON ur.intCodigoUsuario = u.intCodigoUsuario
+													INNER JOIN enchufatedb.tblrol r ON ur.intCodigoRol = r.intCodigoRol
+													WHERE u.vchCorreo = ?" />
         </security:authentication-provider>
     </security:authentication-manager>
 </beans>

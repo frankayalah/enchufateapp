@@ -7,6 +7,21 @@
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
 
+	<!-- Login Interceptor -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/protected/**" />
+			<bean class="enchufateapp.interceptor.LoginInterceptor" />
+		</mvc:interceptor>
+		<!-- workaround to fix IE8 problem -->
+		<bean id="webContentInterceptor"
+			class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+			<property name="cacheSeconds" value="0" />
+			<property name="useExpiresHeader" value="true" />
+			<property name="useCacheControlHeader" value="true" />
+			<property name="useCacheControlNoStore" value="true" />
+		</bean>
+	</mvc:interceptors>
 
     <!-- TILES -->
     <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
@@ -33,15 +48,15 @@
 
     <!-- View Handler -->
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-        <property name="favorPathExtension" value="true"/>
-        <property name="mediaTypes">
-            <map>
-                <entry key="xml" value="text/xml"/>
-                <entry key="json" value="application/json"/>
-                <entry key="html" value="text/html"/>
-                <entry key="less" value="text/html"/>
-            </map>
-        </property>
+        <!-- <property name="favorPathExtension" value="true" /> -->
+		<!-- <property name="mediaTypes"> -->
+		<!-- <map> -->
+		<!-- <entry key="xml" value="text/xml" /> -->
+		<!-- <entry key="json" value="application/json" /> -->
+		<!-- <entry key="html" value="text/html" /> -->
+		<!-- <entry key="less" value="text/html" /> -->
+		<!-- </map> -->
+		<!-- </property> -->
         <property name="viewResolvers">
             <list>
                 <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
