@@ -3,8 +3,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!doctype html>
 <html lang="pt-BR" id="ng-app" ng-app="">
-<head>
-        <title><spring:message  code="project.title" /></title>
+	<head>
+        <title><spring:message code="project.title" /></title>
         <link href="<c:url value='/resources/css/bootstrap.min.css'  />" rel="stylesheet"/>
         <link href="<c:url value='/resources/css/bootstrap-responsive.min.css'  />" rel="stylesheet"/>
         <link href="<c:url value='/resources/css/project_style.css'  />" rel="stylesheet"/>
