@@ -43,7 +43,7 @@
     
     
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.FixedLocaleResolver">
-        <property name="defaultLocale" value="en"/>
+        <property name="defaultLocale" value="es"/>
     </bean>
 
     <!-- View Handler -->
