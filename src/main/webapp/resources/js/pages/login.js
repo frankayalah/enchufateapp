@@ -19,17 +19,14 @@ $(function() {
         }
       },
       submitHandler: function(form) {
-        form.submit();
+    	$("#j_username").val($("#j_username").val().trim());
+    	$("#j_password").val($("#j_password").val().trim());
+      	if ($("form[name='login']").valid()) {
+      		form.submit();
+      	}
       }
     });
-    
-    $("#j_username").blur(function() {
-    	$("form[name='login']").valid();
-	});
-    
-    $("#j_password").blur(function() {
-    	$("form[name='login']").valid();
-  	});
+  
 });
 
 function loginController($scope, $location) {

@@ -5,7 +5,7 @@ function contactsController($scope, $http) {
 
     $scope.lastAction = '';
 
-    $scope.url = "/enchufateapp/protected/contacts/";
+    $scope.url = "/enchufateapp/protected/profile/";
 
     $scope.errorOnSubmit = false;
     $scope.errorIllegalAccess = false;
@@ -103,7 +103,7 @@ function contactsController($scope, $http) {
 
     $scope.startDialogAjaxRequest = function () {
         $scope.displayValidationError = false;
-        $("#loadingModal").modal('show');
+//        $("#loadingModal").modal('show');
         $scope.previousState = $scope.state;
         $scope.state = 'busy';
     }

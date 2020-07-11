@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link href="<c:url value='/resources/css/project_style.css'  />" rel="stylesheet"/>
+
 <div class="row-fluid" ng-controller="contactsController">
     <h2>
         <p class="text-center">
@@ -12,7 +13,7 @@
                ng-class="{'': displaySearchButton == true, 'none': displaySearchButton == false}"
                title="<spring:message code="search"/>&nbsp;<spring:message code="contact"/>"
                class="btn btn-inverse" data-toggle="modal">
-                <i class="icon-search"></i>
+                <i class="fa fa-search"></i>
             </a>
         </p>
     </h2>
@@ -35,7 +36,7 @@
 
         <div ng-class="{'alert badge-inverse': displaySearchMessage == true, 'none': displaySearchMessage == false}">
             <h4>
-                <p class="messageToUser"><i class="icon-info-sign"></i>&nbsp;{{page.searchMessage}}</p>
+                <p class="messageToUser"><i class="fa fa-info-sign"></i>&nbsp;{{page.searchMessage}}</p>
             </h4>
             <a href="#"
                role="button"
@@ -43,24 +44,23 @@
                ng-class="{'': displaySearchMessage == true, 'none': displaySearchMessage == false}"
                title="<spring:message code='search.reset'/>"
                class="btn btn-inverse" data-toggle="modal">
-                <i class="icon-remove"></i> <spring:message code="search.reset"/>
+                <i class="fa fa-remove"></i> <spring:message code="search.reset"/>
             </a>
         </div>
 
         <div ng-class="{'alert badge-inverse': displayMessageToUser == true, 'none': displayMessageToUser == false}">
             <h4 class="displayInLine">
-                <p class="messageToUser displayInLine"><i class="icon-info-sign"></i>&nbsp;{{page.actionMessage}}</p>
+                <p class="messageToUser displayInLine"><i class="fa fa-info-sign"></i>&nbsp;{{page.actionMessage}}</p>
             </h4>
         </div>
 
         <div ng-class="{'alert alert-block alert-error': state == 'error', 'none': state != 'error'}">
-            <h4><i class="icon-info-sign"></i> <spring:message code="error.generic.header"/></h4><br/>
-
-            <p><spring:message code="error.generic.text"/></p>
+            <h4><i class="fa fa-info-sign"></i> <spring:message code="error.generic.header"/></h4><br/>
+            <p><spring:message code="error.generic.text"/></p> <!-- TODO: MENSAJE DE ERROR GENÉRICO -->
         </div>
 
         <div ng-class="{'alert alert-info': state == 'noresult', 'none': state != 'noresult'}">
-            <h4><i class="icon-info-sign"></i> <spring:message code="contacts.emptyData"/></h4><br/>
+            <h4><i class="fa fa-info-sign"></i> <spring:message code="contacts.emptyData"/></h4><br/>
 
             <p><spring:message code="contacts.emptyData.text"/></p>
         </div>
@@ -88,14 +88,14 @@
                                role="button"
                                title="<spring:message code="update"/>&nbsp;<spring:message code="contact"/>"
                                class="btn btn-inverse" data-toggle="modal">
-                                <i class="icon-pencil"></i>
+                                <i class="fa fa-pencil"></i>
                             </a>
                             <a href="#deleteContactsModal"
                                ng-click="selectedContact(contact);"
                                role="button"
                                title="<spring:message code="delete"/>&nbsp;<spring:message code="contact"/>"
                                class="btn btn-inverse" data-toggle="modal">
-                                <i class="icon-minus"></i>
+                                <i class="fa fa-minus"></i>
                             </a>
                         </div>
                     </td>
@@ -145,7 +145,7 @@
                title="<spring:message code='create'/>&nbsp;<spring:message code='contact'/>"
                class="btn btn-inverse"
                data-toggle="modal">
-                <i class="icon-plus"></i>
+                <i class="fa fa-plus"></i>
                 &nbsp;&nbsp;<spring:message code="create"/>&nbsp;<spring:message code="contact"/>
             </a>
         </div>
