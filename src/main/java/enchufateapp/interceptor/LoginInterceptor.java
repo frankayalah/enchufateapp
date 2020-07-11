@@ -18,14 +18,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        HttpSession session = request.getSession();
-
-        User user = (User) session.getAttribute("user");
+        
+    	HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("usersession");
         if(user == null){
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             String email = auth.getName();
             user = userService.findByCorreo(email);
-            session.setAttribute("user", user);
+            session.setAttribute("usersession", user);
         }
 
         return super.preHandle(request, response, handler);

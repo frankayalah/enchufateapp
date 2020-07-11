@@ -2,28 +2,33 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<div class="masthead">
-    <h3 class="muted">
-        <spring:message code='header.message'/>
-    </h3>
-
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="container">
-                <ul class="nav" ng-controller="LocationController">
-                    <li ng-class="{'active': activeURL == 'home', '': activeURL != 'home'}" >
-                        <a href="<c:url value="/"/>"
-                           title='<spring:message code="header.home"/>'
-                                >
-                            <p><spring:message code="header.home"/></p>
-                        </a>
-                    </li>
-                    <li ng-class="{'gray': activeURL == 'contacts', '': activeURL != 'contacts'}"><a title='<spring:message code="header.contacts"/>' href="<c:url value='/protected/contacts'/>"><p><spring:message code="header.contacts"/></p></a></li>
-                </ul>
-                <ul class="nav pull-right">
-                    <li><a href="<c:url value='/logout' />" title='<spring:message code="header.logout"/>'><p class="displayInLine"><spring:message code="header.logout"/>&nbsp;(${user.nombre})</p></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#"><img src="<c:url value='/resources/img/logo.png' />" style="height: 39px; width: 48px;"></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-collapse collapse" id="navbarCollapse" style="">
+    <ul class="navbar-nav mr-auto" ng-controller="LocationController">
+      <li class="nav-item" ng-class="{'active': activeURL == 'home', '': activeURL != 'home'}">
+        <a class="nav-link" href="<c:url value="/"/>">
+        	<spring:message code="header.home"/>
+        </a>
+      </li>
+      <li class="nav-item" ng-class="{'active': activeURL == 'search', '': activeURL != 'search'}">
+        <a class="nav-link" href="<c:url value='/protected/search'/>">
+        	<spring:message code="header.search"/>
+        </a>
+      </li>
+      <li class="nav-item" ng-class="{'active': activeURL == 'profile', '': activeURL != 'profile'}">
+        <a class="nav-link" href="<c:url value='/protected/profile'/>">
+        	<spring:message code="header.profile"/>
+        </a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item">
+      	<a class="nav-link" title="<spring:message code="header.logout"/>" href="<c:url value='/logout'/>">(${usersession.nombreCompleto})&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i></a>
+      </li>
+    </ul> 
+  </div>
+</nav>

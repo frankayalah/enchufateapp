@@ -1,11 +1,7 @@
 package enchufateapp.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -17,38 +13,56 @@ public class User {
 	@Id
 	@GeneratedValue
 	@Column(name = "intCodigoUsuario")
-	private int codigoUsuario;
+	private int id;
 	@Column(name = "vchNombre")
 	private String nombre;
-	@Column(name = "vchApellidoPaterno")
-	private String apellidoPaterno;
-	@Column(name = "vchApellidoMaterno")
-	private String apellidoMaterno;
+	@Column(name = "vchApellidos")
+	private String apellidos;
 	@Column(name = "vchCorreo")
 	private String correo;
 	@Column(name = "vchClave")
 	private String clave;
 	@Column(name = "dtmFechaNacimiento")
-	private Date fechaNacimiento;
+	private String fechaNacimiento;
 	@Column(name = "blbImagen")
 	private byte[] imagen;
 	@Column(name = "vchGenero")
 	private String genero;
 	@Column(name = "vchSede")
 	private String sede;
+	@Column(name = "vchDescripcion")
+	private String descripcion;
 	@Column(name = "intActivo")
 	private int activo;
-	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "vchRol")
-	private Role role;
 
-	public int getCodigoUsuario() {
-		return codigoUsuario;
+	private String[] hobby;
+
+	public User() {
+
 	}
 
-	public void setCodigoUsuario(int codigoUsuario) {
-		this.codigoUsuario = codigoUsuario;
+	public User(String nombre, String apellidos, String correo, String clave, String fechaNacimiento, byte[] imagen,
+			String genero, String sede, String descripcion, int activo, int id) {
+		super();
+
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.correo = correo;
+		this.clave = clave;
+		this.fechaNacimiento = fechaNacimiento;
+		this.imagen = imagen;
+		this.genero = genero;
+		this.sede = sede;
+		this.descripcion = descripcion;
+		this.activo = activo;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -59,20 +73,12 @@ public class User {
 		this.nombre = nombre;
 	}
 
-	public String getApellidoPaterno() {
-		return apellidoPaterno;
+	public String getApellidos() {
+		return apellidos;
 	}
 
-	public void setApellidoPaterno(String apellidoPaterno) {
-		this.apellidoPaterno = apellidoPaterno;
-	}
-
-	public String getApellidoMaterno() {
-		return apellidoMaterno;
-	}
-
-	public void setApellidoMaterno(String apellidoMaterno) {
-		this.apellidoMaterno = apellidoMaterno;
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
 	}
 
 	public String getCorreo() {
@@ -91,11 +97,11 @@ public class User {
 		this.clave = clave;
 	}
 
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
@@ -123,12 +129,47 @@ public class User {
 		this.sede = sede;
 	}
 
-	public Role getRole() {
-		return role;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public int getActivo() {
+		return activo;
+	}
+
+	public void setActivo(int activo) {
+		this.activo = activo;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (object instanceof User) {
+			User user = (User) object;
+			return user.id == id;
+		}
+
+		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		return id;
+	}
+
+	public String[] getHobby() {
+		return hobby;
+	}
+
+	public void setHobby(String[] hobby) {
+		this.hobby = hobby;
+	}
+	
+	public String getNombreCompleto() {
+		return (this.nombre+" "+this.apellidos).trim();
 	}
 
 }
